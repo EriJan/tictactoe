@@ -13,7 +13,7 @@ public class TicTacGame implements Game {
   public void startGame() {
     System.out.println("Någon har sagt att hörn är ett problem, men jag håller faktiskt inte riktigt med.");
 
-    TicTacControlImpl.INSTANCE.setModel(new TicTacModelImpl());
+    //TicTacControlImpl.INSTANCE.setModel(new TicTacModelImpl());
     new TicTacFrame(TicTacControlImpl.INSTANCE);
   }
 }

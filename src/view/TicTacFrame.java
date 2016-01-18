@@ -2,6 +2,7 @@ package view;
 
 import control.GenericObserver;
 import control.GenericSubject;
+import control.ModelNotInitialisedException;
 import control.TicTacControl;
 
 import javax.swing.*;
@@ -36,17 +37,18 @@ public class TicTacFrame extends JFrame implements GenericObserver<TicTacControl
     pack();
   }
 
-  private void addButtons(){
+  private void addButtons() {
     for (int i = 0; i < 3; i++){
       for (int j = 0; j < 3; j++ ){
         JButton b = new JButton();
-        b.setText(ticTacControl.getTile(i,j));
+        b.setText(ticTacControl.getTile(i, j));
         b.setActionCommand("" + i + "" + j);
         b.addActionListener(e -> {
           String ac = b.getActionCommand();
           int r = Character.getNumericValue(ac.charAt(0));
           int c = Character.getNumericValue(ac.charAt(1));
-          boolean moveOk = ticTacControl.tileClick(r,c);
+          boolean moveOk = false;
+          moveOk = ticTacControl.tileClick(r,c);
           if (!moveOk) {
             JOptionPane.showMessageDialog(this, "Tile not available.", "Gameplay error.",
                 JOptionPane.ERROR_MESSAGE);
@@ -71,3 +73,4 @@ public class TicTacFrame extends JFrame implements GenericObserver<TicTacControl
     }
   }
 }
+

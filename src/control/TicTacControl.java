@@ -9,7 +9,7 @@ import model.TicTacModel;
  */
 public interface TicTacControl extends GenericSubject {
   void setModel(TicTacModel ticTacModel);
-  boolean tileClick(int row, int column);
+  boolean tileClick(int row, int column) throws ModelNotInitialisedException;
   void startGame();
   void exitGame();
 

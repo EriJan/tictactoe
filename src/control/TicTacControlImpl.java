@@ -10,18 +10,15 @@ import java.util.List;
  * @Version 1.0
  * @since 14/01/16
  */
-public enum TicTacControlImpl implements TicTacControl{
-  INSTANCE {
-
-  };
+public enum TicTacControlImpl implements TicTacControl {
+  INSTANCE;
 
   TicTacModel ticTacModel;
   List<GenericObserver<TicTacControl>> observersList = new ArrayList<>();
 
-
-//  TicTacControlImpl(TicTacModel ticTacModel) {
-//    this.ticTacModel = ticTacModel;
-//  }
+  TicTacControlImpl() {
+    ticTacModel = null;
+  }
 
   @Override
   public void setModel(TicTacModel ticTacModel) {
@@ -30,8 +27,11 @@ public enum TicTacControlImpl implements TicTacControl{
 
   @Override
   public boolean tileClick(int row, int column) {
+    if (ticTacModel == null) {
+      throw new ModelNotInitialisedException();
+    }
     boolean returnBool;
-    if(!ticTacModel.isGameOver()) {
+    if (!ticTacModel.isGameOver()) {
       returnBool = ticTacModel.setTile(row, column);
       if (ticTacModel.isGameOver()) {
         ticTacModel.setGoMessage();
@@ -42,6 +42,7 @@ public enum TicTacControlImpl implements TicTacControl{
     notifyObservers();
     return returnBool;
   }
+
 
   // ToDo create a TicTac game gui and model.
   @Override
@@ -57,7 +58,10 @@ public enum TicTacControlImpl implements TicTacControl{
 
   @Override
   public String getTile(int row, int column) {
-    return ticTacModel.getTile(row,column);
+    if (ticTacModel == null) {
+      throw new ModelNotInitialisedException();
+    }
+    return ticTacModel.getTile(row, column);
   }
 
   @Override
