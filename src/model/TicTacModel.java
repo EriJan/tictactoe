@@ -6,12 +6,13 @@ package model;
  * @since 13/01/16
  */
 public interface TicTacModel {
-  boolean setTile(int[] coordinate);
+  boolean setTile(int row, int column);
   boolean isGameOver();
-  String getTile(int[] coordinate);
+  String getTile(int row, int column);
   int getXMorale();
   int getOMorale();
   void incrementTurn();
 
 
+  void setGoMessage();
 }

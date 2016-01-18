@@ -23,5 +23,6 @@ public enum TileState {
     public String toString() {
       return " ";
     }
-  };
+  },
+  FROZEN;
 }
