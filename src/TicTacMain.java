@@ -8,5 +8,6 @@ public class TicTacMain {
     GameFactory gameFactory = new GameFactoryImpl();
     Game theGame = gameFactory.createGame("TicTacToe");
     theGame.startGame();
+
   }
 }

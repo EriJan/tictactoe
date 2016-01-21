@@ -13,7 +13,7 @@ import java.util.List;
 public enum TicTacControlImpl implements TicTacControl {
   INSTANCE;
 
-  TicTacModel ticTacModel;
+ TicTacModel ticTacModel;
   List<GenericObserver<TicTacControl>> observersList = new ArrayList<>();
 
   TicTacControlImpl() {
@@ -22,6 +22,7 @@ public enum TicTacControlImpl implements TicTacControl {
 
   @Override
   public void setModel(TicTacModel ticTacModel) {
+    System.out.println("Model set");
     this.ticTacModel = ticTacModel;
   }
 
