@@ -13,5 +13,6 @@ public interface TicTacControl extends GenericSubject {
   void startGame();
   void exitGame();
 
+  String getStateSymbol();
   String getTile(int row, int column);
 }

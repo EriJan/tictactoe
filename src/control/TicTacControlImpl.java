@@ -58,6 +58,11 @@ public enum TicTacControlImpl implements TicTacControl {
   }
 
   @Override
+  public String getStateSymbol() {
+    return ticTacModel.getStateSymbol();
+  }
+
+  @Override
   public String getTile(int row, int column) {
     if (ticTacModel == null) {
       throw new ModelNotInitialisedException();

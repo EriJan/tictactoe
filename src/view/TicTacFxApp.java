@@ -3,6 +3,7 @@ package view;
 import control.TicTacControl;
 import control.TicTacControlImpl;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -29,6 +32,11 @@ import java.util.ResourceBundle;
 public class TicTacFxApp extends Application implements Initializable {
 
   TicTacControl ticTacControl;
+
+@FXML
+Label currentPlayer;
+  @FXML
+  Button exitGame;
 
   @FXML
   Label r0c0;
@@ -72,12 +80,12 @@ public class TicTacFxApp extends Application implements Initializable {
 
   public static void runFxGame() {
     Application.launch();
-    }
+  }
 
   private void setCellContent() {
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
-        System.out.println(TicTacControlImpl.INSTANCE.getTile(i,j));
+
         tileLabels[i][j].setText(ticTacControl.getTile(i,j));
       }
     }
@@ -85,13 +93,34 @@ public class TicTacFxApp extends Application implements Initializable {
 
   public void onClick(MouseEvent event){
     Label label = (Label)event.getSource();
+    for(int i = 0; i < 3; i++){
+      for (int j = 0; j < 3; j++){
+        if (label == tileLabels[i][j]){
+          if(!ticTacControl.tileClick(i,j)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Aj aj...");
+            alert.setContentText("...Ernst rynkar på pannan och Gillar INTE va du just gjorde");
+            alert.setHeaderText("Fel fel fel, upptaget! :) ");
+            alert.showAndWait();
+          }
+        }
+      }
+    }
     setCellContent();
+    if(label.getText().equals("O")){
+      currentPlayer.setText("X");
+    } else {
+      currentPlayer.setText("O");
+    }
   }
 
+  public void exitGame(){
+    Platform.exit();
+    System.exit(0);
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    System.out.println("Hejhejhejhejhejhejhejhej.");
 
     ticTacControl = TicTacControlImpl.INSTANCE;
     ticTacControl.setModel(new TicTacModelImpl());
@@ -106,5 +135,7 @@ public class TicTacFxApp extends Application implements Initializable {
     tileLabels[2][0] = r2c0;
     tileLabels[2][1] = r2c1;
     tileLabels[2][2] = r2c2;
+    setCellContent();
+    currentPlayer.setText(ticTacControl.getStateSymbol());
   }
 }

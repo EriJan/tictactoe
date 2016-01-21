@@ -12,6 +12,7 @@ public interface TicTacModel {
   int getXMorale();
   int getOMorale();
   void incrementTurn();
+  String getStateSymbol();
 
 
   void setGoMessage();

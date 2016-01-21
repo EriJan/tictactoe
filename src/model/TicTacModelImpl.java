@@ -174,6 +174,11 @@ public class TicTacModelImpl implements TicTacModel {
   }
 
   @Override
+  public String getStateSymbol() {
+    return getTurnState().toString();
+  }
+
+  @Override
   public void setGoMessage() {
     if (winCheck()) {
 
