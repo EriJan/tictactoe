@@ -32,7 +32,7 @@ public class TicTacFrame extends JFrame implements GenericObserver<TicTacControl
     ticTacControl.registerObserver(this);
     addButtons();
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setPreferredSize(new Dimension(800,800));
+//    setPreferredSize(new Dimension(800,800));
     setVisible(true);
     pack();
   }
