@@ -14,7 +14,7 @@ public class TicTacGame implements Game {
   public void startGame() {
     System.out.println("Någon har sagt att hörn är ett problem, men jag håller faktiskt inte riktigt med.");
 
-    boolean fxView = true;
+    boolean fxView = false;
 
     if (fxView) {
       TicTacFxApp.runFxGame();

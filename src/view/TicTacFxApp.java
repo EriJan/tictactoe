@@ -4,7 +4,6 @@ import control.TicTacControl;
 import control.TicTacControlImpl;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +23,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * @author Jan Eriksson
+ * @author Jan Eriksson & Ulrika Goloconda Fahlén
  * @Version 1.0
  * @since 21/01/16
  */
